@@ -18,8 +18,11 @@ namespace assignment1
     {
         static void Main(string[] args)
         {
-                // Initialize userInterface object in UserInterface class:
+                // Initialize class instances for use:
+            WineItem wineItem = new WineItem();
+            WineItemCollection wineItemCollection = new WineItemCollection();
             UserInterface userInterface = new UserInterface();
+            CSVProcessor csvProcessor = new CSVProcessor();
 
                 // Create a variable for the user's choice and set to 0:
             int userChoice = 0;
@@ -33,19 +36,19 @@ namespace assignment1
                     // Call the appropriate method based on the user's choice:
                 switch (userChoice)
                 {
-                    case 1: // CSVProcessor method call:
-                        Console.WriteLine("1");
+                    case 1: // CSVProcessor method call to load the wine list:
+                        csvProcessor.ProcessCsvFile();
                         break;
-                    case 2: // Print method call:
+                    case 2: // Print method call to print the wine list:
                         Console.WriteLine("2");
                         break;
-                    case 3: // Search method call:
+                    case 3: // Search method call to search the wine list:
                         Console.WriteLine("3");
                         break;
-                    case 4: // Add WineItem call:
+                    case 4: // Add WineItem call to add an item to the wine list:
                         Console.WriteLine("4");
                         break;
-                    default: // Choice was to exit, so break without calling any other method:
+                    default: // Choice was to exit (5), so break without calling any other method:
                         break;
                 }
             }
