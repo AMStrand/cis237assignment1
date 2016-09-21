@@ -15,9 +15,30 @@ namespace assignment1
     class WineItem
     {
             // Backing Field Declarations:
-        string _id;
-        string _description;
-        string _pack;
+        private string _id;
+        private string _description;
+        private string _pack;
+
+            // Id property getter and setter:
+        public string Id
+        {
+            set { _id = value; }
+            get { return _id; }
+        }
+
+            // Description property getter and setter:
+        public string Description
+        {
+            set { _description = value; }
+            get { return _description; }
+        }
+
+            // Pack property getter and setter:
+        public string Pack
+        {
+            set { _pack = value; }
+            get { return _pack; }
+        }
 
             // Default Constructor:
         public WineItem()
@@ -37,7 +58,7 @@ namespace assignment1
         // Public ToString override method:
         public override string ToString()
         {   
-            return this._id.PadRight(8) + this._description.PadLeft(60) + " " + this._pack.PadLeft(15);
+            return this._id.PadLeft(7) + this._description.PadLeft(65) + " " + this._pack.PadLeft(25);
         }
     }
 }

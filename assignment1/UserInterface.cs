@@ -42,7 +42,36 @@ namespace assignment1
             }
         }
 
-            // Other user interface stuff added here:
+        public void AddWineItem()
+        {
+            Console.WriteLine("Enter a new wine item.");
+            Console.Write("Enter an ID: ");
+            string id = Console.ReadLine();
+            Console.WriteLine();
+            Console.Write("Enter a description: ");
+            string description = Console.ReadLine();
+            Console.WriteLine();
+            Console.Write("Enter a pack size: ");
+            string pack = Console.ReadLine();
+            Console.WriteLine();
+
+
+        }
+
+        public void PrintWineList(WineItem[] items)
+        {
+            string allOutput = "";
+
+            for (int x = 0; x < 9999; x++)
+            {
+                if (items[x] != null)
+                {
+                    allOutput += items[x].ToString() + Environment.NewLine;
+                }
+            }
+
+            Console.WriteLine(allOutput);
+        }
 
 
     }

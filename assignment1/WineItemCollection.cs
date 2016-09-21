@@ -14,6 +14,22 @@ namespace assignment1
 {
     class WineItemCollection
     {
+        private WineItem[] _wineItems;
 
+        public WineItem[] WineItems
+        {
+            set { _wineItems = value; }
+            get { return _wineItems; }
+        }
+
+        public WineItemCollection()
+        {
+
+        }
+
+        public WineItemCollection(WineItem[] wineItems)
+        {
+            _wineItems = wineItems;
+        }
     }
 }

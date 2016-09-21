@@ -18,11 +18,14 @@ namespace assignment1
     {
         static void Main(string[] args)
         {
-                // Initialize class instances for use:
+                // Create and initialize class instances for use:
             WineItem wineItem = new WineItem();
             WineItemCollection wineItemCollection = new WineItemCollection();
             UserInterface userInterface = new UserInterface();
             CSVProcessor csvProcessor = new CSVProcessor();
+
+                // Create and initialize the array for the wine items:
+            WineItem[] wineItems = new WineItem[9999];
 
                 // Create a variable for the user's choice and set to 0:
             int userChoice = 0;
@@ -37,16 +40,20 @@ namespace assignment1
                 switch (userChoice)
                 {
                     case 1: // CSVProcessor method call to load the wine list:
-                        csvProcessor.ProcessCsvFile();
+                        string pathToCsvFile = "..\\..\\..\\datafiles\\WineList.csv";       // *** THIS WAS DIFFICULT TO CONFIGURE ***
+                        if (csvProcessor.ProcessCsvFile(pathToCsvFile, wineItems) == true)
+                        {
+                            wineItemCollection.WineItems = wineItems;
+                        }
                         break;
                     case 2: // Print method call to print the wine list:
-                        Console.WriteLine("2");
+                        userInterface.PrintWineList(wineItems);
                         break;
                     case 3: // Search method call to search the wine list:
                         Console.WriteLine("3");
                         break;
                     case 4: // Add WineItem call to add an item to the wine list:
-                        Console.WriteLine("4");
+                        userInterface.AddWineItem();
                         break;
                     default: // Choice was to exit (5), so break without calling any other method:
                         break;
