@@ -17,7 +17,7 @@ namespace assignment1
     {
         public bool ProcessCsvFile(string pathToCsvFile, WineItem[] wineItems)
         {
-                // Create the streamReader object and set to null:
+            // Create the streamReader object and set to null:
             StreamReader streamReader = null;
 
                 // Try/catch structure to attempt to read the csv file:
@@ -28,7 +28,7 @@ namespace assignment1
                     // Attempt to instantiate the streamreader based on the csv file's location:
                 streamReader = new StreamReader(pathToCsvFile);
                     // Start a line counter and set to 0:
-                int counter = 1;
+                int counter = 0;
                     // Loop so that as long as the line read in isn't blank, process the line:
                 while ((wineItem = streamReader.ReadLine()) != null)
                 {

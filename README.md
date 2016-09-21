@@ -91,8 +91,8 @@ or something else). It just needs to be obvious to the user something has happen
 
 ## Outside Resources Used
 
-
+My in class notes from CIS 209.
 
 ## Known Problems, Issues, And/Or Errors in the Program
 
-
+None.

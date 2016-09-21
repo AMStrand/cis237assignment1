@@ -40,20 +40,61 @@ namespace assignment1
                 switch (userChoice)
                 {
                     case 1: // CSVProcessor method call to load the wine list:
-                        string pathToCsvFile = "..\\..\\..\\datafiles\\WineList.csv";       // *** THIS WAS DIFFICULT TO CONFIGURE ***
-                        if (csvProcessor.ProcessCsvFile(pathToCsvFile, wineItems) == true)
-                        {
-                            wineItemCollection.WineItems = wineItems;
+                        string pathToCsvFile = "..\\..\\..\\datafiles\\WineList.csv";       // *** NOTE - THIS WAS DIFFICULT TO CONFIGURE ***
+                        
+                            // If one of the first lines in the wineItems array is empty, import the csv file:
+                        if (wineItems[10] == null)
+                        {       // If the import succeeds, assign the array to the WineItemCollection array object:
+                            if (csvProcessor.ProcessCsvFile(pathToCsvFile, wineItems) == true)
+                            {
+                                wineItemCollection.WineItems = wineItems;
+                            }
+                            else
+                            {       // Error message if there is an issue uploading the csv file:
+                                Console.WriteLine("There was an error uploading the csv file.");
+                                Console.WriteLine();
+                            }
+                        }
+                        else
+                        {       // Error message if the csv file has already been loaded:
+                            Console.WriteLine("You have already loaded the csv file.");
+                            Console.WriteLine();
                         }
                         break;
                     case 2: // Print method call to print the wine list:
-                        userInterface.PrintWineList(wineItems);
+                        if (wineItems[0] != null)
+                        {       // If there are items, print them:
+                            userInterface.PrintWineList(wineItems);
+                        }
+                        else
+                        {       // If not, output error to user:
+                            userInterface.EmptyWineListOutput();
+                        }
                         break;
                     case 3: // Search method call to search the wine list:
-                        Console.WriteLine("3");
+                        if (wineItems[0] != null)
+                        {       // If there are items, allow the search:
+                            Console.Write("Input the item ID to search for: ");
+                                // Call method to search:
+                            wineItemCollection.SearchWineItems(Console.ReadLine());
+                        }
+                        else
+                        {       // If the array doesn't contain anything, output error to user:
+                            userInterface.EmptyWineListOutput();
+                        }
                         break;
                     case 4: // Add WineItem call to add an item to the wine list:
-                        userInterface.AddWineItem();
+                            // If there are items, allow the add:
+                        if (wineItems[0] != null)
+                        {       // Get new wine item information from user:
+                            userInterface.AddWineItem();
+                                // Add the new item in the first open spot in the array:
+                            wineItemCollection.WineItems[wineItemCollection.FindLastPlace()] = new WineItem(userInterface.AddItemId, userInterface.AddItemDescription, userInterface.AddItemPack);
+                        }
+                        else
+                        {       // Otherwise, inform the user:
+                            userInterface.EmptyWineListOutput();
+                        }
                         break;
                     default: // Choice was to exit (5), so break without calling any other method:
                         break;
